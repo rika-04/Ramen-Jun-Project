@@ -69,15 +69,19 @@ export function Footer() {
             {copy.footer.social}
           </h4>
           <div className="flex gap-4">
-            {[Instagram, Facebook, Twitter].map((Icon, i) => (
-              <a
-                href="https://www.instagram.com/ramenjun_de/?hl=en" // <-- replace with exact handle
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Ramen Jun on Instagram"
-                className="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center
-                           text-primary hover:bg-primary hover:text-black transition-all duration-300"
-              >
+                {[
+                  { Icon: Instagram, href: "https://www.instagram.com/ramenjun_de/?hl=en", label: "Instagram" },
+                  { Icon: Facebook, href: "https://www.facebook.com/Ramen.Jun.Red", label: "Facebook" }
+                ].map(({ Icon, href, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Ramen Jun on ${label}`}
+                    className="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center
+                               text-primary hover:bg-primary hover:text-black transition-all duration-300"
+                  >
                 <Icon size={18} />
               </a>
             ))}

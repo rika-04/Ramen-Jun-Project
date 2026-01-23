@@ -217,6 +217,7 @@ export default function MenuLayout({ locationLabel, menu }: Props) {
 
                   return (
                     <button
+                      
                       key={item.name}
                       type="button"
                       onClick={() => item.img && setPreview(item)}
@@ -274,37 +275,34 @@ export default function MenuLayout({ locationLabel, menu }: Props) {
 
               {/* RIGHT preview */}
               <div className="sticky top-28 hidden lg:block">
-                <div className="border border-border/60 bg-black/20 p-3">
-                  {preview?.img ? (
-                    <img
-                      src={preview.img}
-                      alt={preview.name}
-                      className="w-full h-[420px] object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-[420px] flex items-center justify-center text-sm text-muted-foreground">
-                      Hover a dish to preview
-                    </div>
-                  )}
-                </div>
+                        <div className="border border-border/60 bg-black/20 p-3">
+                          <AnimatePresence mode="wait">
+                            <motion.img
+                              key={preview?.img || "default-image"}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.3 }}
+                              src={preview?.img || "/images/MenuDefault.jpg"} 
+                              alt={preview?.name || "Ramen Jun"}
+                              className="w-full h-[420px] object-cover"
+                            />
+                          </AnimatePresence>
+                        </div>
 
-                {preview ? (
-                  <div className="mt-4">
-                    <div className="text-sm uppercase tracking-[0.3em] text-red-600">
-                      {preview.name}
-                    </div>
-                    {preview.desc?.trim() ? (
-                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                        {preview.desc}
-                      </p>
-                    ) : null}
-                  </div>
-                ) : null}
+                        <div className="mt-4 min-h-[60px]">
+                          <div className="text-sm uppercase tracking-[0.3em] text-red-600">
+                            {preview?.name || "Welcome to Ramen Jun"}
+                          </div>
+                          <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                            {preview?.desc || "Explore our traditional Japanese flavors. Hover over any dish to see a preview."}
+                          </p>
+                        </div>
+                      </div>
+                    </div> {/* Added this missing div to close the 'Content' grid */}
+                  </motion.div>
+                </AnimatePresence>
               </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
 
       {/* Allergens footer (centered) */}
       <div

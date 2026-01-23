@@ -38,7 +38,7 @@ export function Navigation() {
     { href: withLang(""), label: copy.nav.home },
     { href: withLang("/menu"), label: copy.nav.menu },
     { href: withLang("/location"), label: copy.nav.location },
-    { href: withLang("/contact"), label: copy.nav.contact },
+    { href: withLang("/ourStory"), label: copy.nav.ourStory },
   ];
 
   return (

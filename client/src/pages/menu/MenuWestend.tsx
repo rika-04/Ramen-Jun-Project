@@ -5,7 +5,7 @@ const MENU_WESTEND: MenuData = {
     "Tonkotsu Ramen": {
       items: [
         {type: "header",title:"Tonkotsu", desc:"Schweinefleischbrühe mit Nudeln aus Weizenmehl, 2 Chashu (Schweinefleischscheiben), Frühlingszwiebeln, Kikurage Pilze und eingelegtem Ingwer"},
-        { name: "Tonkotsu Classic",desc: "2 Scheiben Chashu Schweinefleisch", price: "15,00" , img:"/images/Ramen_Tonkotsu.jpg"},
+        { name: "Tonkotsu Classic",desc: "2 Scheiben Chashu Schweinefleisch", price: "15,00" , img:"/images/ramen/Ramen_Tonkotsu.jpg"},
         { name: "Tonkotsu Chashu",desc: "Classic + 3 extra Scheiben Chashu Schweinefleisch", price: "17,10" },
         { name: "Tonkotsu Deluxe",desc: "Classic + 2 extra Scheiben Chashu Schweinefleisch und Ni-Tamago (eingelegtes und gekochtes Ei)", price: "18,40" },
         { name: "Tonkotsu Special",desc:"Classic + Ni-Tamago, geröstete Tomate, gerösteten Knoblauch und Avocado ", price: "20,80" },
@@ -65,7 +65,7 @@ const MENU_WESTEND: MenuData = {
     },
     "Veggie Ramen": {
       items: [
-        { name: "Veggie Miso Ramen", price: "17,50" },
+        { name: "Veggie Miso Ramen", price: "17,50", img:"/images/ramen/Ramen_VeggieMisoNoSp.jpg" },
         { name: "Spicy Veggie Miso Ramen",desc: "Vegetarische Brühe mit Misopaste, dicke Weizennudeln, Frühlingszwiebeln, Zwiebeln, Tomaten, rote & grüne Paprika, Pilze, Kartoffeln, Auberginen, Zucchini, Bratpaprika, Sesam und Tofu", price: "18,00", allergens:[3] },
         { name: "Veggie White Ramen", price: "18,00"},
         { name: "Spicy Veggie White Ramen",desc: "Vegetarische Brühe mit Misopaste, dünnen Weizennudeln, Sojamilch, Lauch, gerösteter Knoblauch,geröstete Tomate, Kikurage, Pilze und Sojaschnitzel (enthält Spuren von Inger, Pilzen und Chili)", price: "19,50" },
@@ -77,12 +77,12 @@ const MENU_WESTEND: MenuData = {
       description:
       "Alle unsere Gyoza Teigtaschen, sowie Nudeln werden in unserer Küche täglich frisch zubereitet",
       items:[
-          { name: "Edamame", desc: "Sea salt.", price: "4,50" },
-          { name: "Gyoza (3x/5x)", desc: "Hausgemachte gebratene Teigtaschen, gefüllt mit Gemüse und Schweinefleisch", price: "5,20/8,50" },
+          { name: "Edamame", desc: "Sea salt.", price: "4,50", img:"/images/sides/Side_Edamame.png" },
+          { name: "Gyoza (3x/5x)", desc: "Hausgemachte gebratene Teigtaschen, gefüllt mit Gemüse und Schweinefleisch", price: "5,20/8,50", img:"/images/sides/Side_Gyoza1.png" },
           { name: "Shrimp Gyoza", desc: "Hausgemachte gebratene Teigtaschen, gefüllt mit Garnelen, Gemüse und Schweinefleisch", price: "4.50" },
-          { name: "Karaage (3x/6x)", desc: "Saftiges Hünerschenkelfleisch in einer würzigen Marinade knusprig frittiert", price: "5,60/9,80" ,img:"/images/Side_Karaage.jpg"},
+          { name: "Karaage (3x/6x)", desc: "Saftiges Hünerschenkelfleisch in einer würzigen Marinade knusprig frittiert", price: "5,60/9,80" ,img:"/images/sides/Side_Karaage.jpg"},
           { name: "Chicken Nanban (3x/6x)", desc: "Saftiges Hünerschenkelfleisch in einer würzigen Marinade knusprig frittiert mit hausgemachter süß-sauer Soße und Tartar Soße (aus gekochtem Ei)", price: "6,80/11,00" },
-          { name: "Chashu Mori", desc: "Würzige Schweinefleischscheiben (Chashu) angerichtet mit scharfen Lauchzwiebeln und Frühlingszwiebeln", price: "6,80" , img:"/images/Side_ChashuMori.jpg", allergens: [3]},
+          { name: "Chashu Mori", desc: "Würzige Schweinefleischscheiben (Chashu) angerichtet mit scharfen Lauchzwiebeln und Frühlingszwiebeln", price: "6,80" , img:"/images/sides/Side_ChashuMori.jpg", allergens: [3]},
         ],
     },
         "Salate":{
@@ -102,8 +102,8 @@ const MENU_WESTEND: MenuData = {
   Deserts: {
     All: {
       items:[
-      { name: "Eis", desc: "Sie können zwei Kugeln Eis in ihrer Lieblingskombination bestellen (Matcha, Schwarzsesam, Vanille)", price: "4,50", img: "/images/Desert_MatchaSesameIceCream.jpg" },
-      { name: "Hausgemachte Dorayaki", desc: "Japanischer Pfannkuchen mit Azukibohnen", price: "4,50", img: "/images/Desert_Dorayaki.jpg" },
+      { name: "Eis", desc: "Sie können zwei Kugeln Eis in ihrer Lieblingskombination bestellen (Matcha, Schwarzsesam, Vanille)", price: "4,50", img: "/images/sides/Desert_MatchaSesameIceCream.jpg" },
+      { name: "Hausgemachte Dorayaki", desc: "Japanischer Pfannkuchen mit Azukibohnen", price: "4,50", img: "/images/sides/Desert_Dorayaki.jpg" },
       { name: "Matcha Affogato", desc: "Vanilleeis mit Matcha Tee", price: "6,80" },
     ],
   },

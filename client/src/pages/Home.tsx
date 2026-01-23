@@ -24,7 +24,7 @@ export default function Home() {
           {/* Image */}
           <div
             className="absolute inset-0 bg-center bg-cover opacity-[0.9] grayscale blur-[0px]"
-            style={{ backgroundImage: 'url("/images/Ramen_MisoDeluxeRamen.jpg")' }}
+            style={{ backgroundImage: 'url("/images/ramen/Ramen_MisoDeluxeRamen.jpg")' }}
           />
           {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-black via-black/80 to-primary/30" />
@@ -162,11 +162,7 @@ export default function Home() {
       {/* GALLERY */}
       <Gallery />
 
-      {/* Featured / Signature Dishes Section */}
-      <section className="py-24 px-6 bg-secondary/30">
-        ...
-      </section>
-      
+    
       {/* Featured Section */}
         <section className="py-24 px-6 bg-secondary/30">
           <div className="max-w-7xl mx-auto text-center">
@@ -179,17 +175,17 @@ export default function Home() {
                 {
                   title: "Miso Deluxe Ramen",
                   desc: "Hand-pulled noodles, 24-hour tonkotsu broth, black truffle oil.",
-                  img: "images/Ramen_MisoDeluxeRamen.jpg"
+                  img: "images/ramen/Ramen_MisoDeluxeRamen.jpg"
                 },
                 {
                   title: "Karaage",
                   desc: "A5 Miyazaki Wagyu, lightly seared, ponzu citrus glaze.",
-                  img: "images/Side_Karaage.jpg"
+                  img: "images/sides/Side_Karaage.jpg"
                 },
                 {
                   title: "Veggie White Ramen",
                   desc: "Kyoto matcha soaked ladyfingers, mascarpone cream.",
-                  img: "images/Ramen_VeggieWhiteRamen.jpg"
+                  img: "images/ramen/Ramen_VeggieWhiteRamen.jpg"
                 }
               ].map((item, i) => (
                 <motion.div

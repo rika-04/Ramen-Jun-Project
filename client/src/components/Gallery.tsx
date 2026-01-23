@@ -10,7 +10,7 @@ interface GalleryItem {
 const galleryData: GalleryItem[] = [
   {
     id: 1,
-    src: "/gallery/EatingRamen.jpg",
+    src: "/images/people/FoodServing.jpg",
     alt: "Restaurant Interior",
     title: "The Atmosphere",
     category: "Ambience",
@@ -18,14 +18,14 @@ const galleryData: GalleryItem[] = [
   },
   {
     id: 2,
-    src: "/gallery/ramen-close.jpg",
+    src: "/images/ingredients/NoodleDough.jpg",
     alt: "Signature Ramen",
     title: "Crafted Noodles",
     category: "Signature",
   },
   {
     id: 3,
-    src: "/gallery/chef-hands.jpg",
+    src: "/images/people/NegiCutting.jpg",
     alt: "Chef at Work",
     title: "The Art of Prep",
     category: "Process",
@@ -33,7 +33,7 @@ const galleryData: GalleryItem[] = [
   },
   {
     id: 4,
-    src: "/gallery/sushi.jpg",
+    src: "/images/ingredients/Chashu.jpg",
     alt: "Fresh Ingredients",
     title: "Shun Ingredients",
     category: "Fresh",

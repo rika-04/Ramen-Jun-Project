@@ -6,7 +6,7 @@ export const dict = {
       home: "Home",
       menu: "Menu",
       location: "Location",
-      contact: "Contact",
+      ourStory: "Our Story",
       reserve: "Reserve Table",
     },
     hero: {
@@ -41,7 +41,7 @@ export const dict = {
       subtitle: "Located in the heart of the district, offering a serence escape from the city bustle.",
       opening: "Opening Hours",
       address: "Address",
-      contact: "Contact",
+      contact: "contact",
       visit_us: "Visit Us",
     },
   },
@@ -52,7 +52,7 @@ export const dict = {
       home: "Start",
       menu: "Menü",
       location: "Standorte",
-      contact: "Kontakt",
+      ourStory: "Über Uns",
       reserve: "Tisch reservieren",
     },
     hero: {

@@ -14,7 +14,7 @@ import ScrollToTop from "./ScrollToTop";
 
 
 import Location from "@/pages/Location";
-import Contact from "@/pages/Contact";
+import OurStory from "@/pages/OurStory";
 import NotFound from "@/pages/not-found";
 
 
@@ -32,14 +32,14 @@ function Router() {
           <Route path="/en/menu/red" component={MenuRed} />
           <Route path="/en/menu/westend" component={MenuWestend} />
           <Route path="/en/location" component={Location} />
-          <Route path="/en/contact" component={Contact} />
+          <Route path="/en/ourStory" component={OurStory} />
 
           <Route path="/de" component={Home} />
           <Route path="/de/menu" component={MenuLocationSelect} />
           <Route path="/de/menu/red" component={MenuRed} />
           <Route path="/de/menu/westend" component={MenuWestend} />
           <Route path="/de/location" component={Location} />
-          <Route path="/de/contact" component={Contact} />
+          <Route path="/de/ourStory" component={OurStory} />
           
           <Route component={NotFound} />
         </Switch>
