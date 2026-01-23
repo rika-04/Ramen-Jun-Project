@@ -94,8 +94,8 @@ export default function MenuLayout({ locationLabel, menu }: Props) {
           Our Menu
         </motion.h1>
 
-        {/* Top Category Tabs */}
-        <div className="flex justify-center gap-12 mt-10">
+        {/* Top Category Tabs - Scrollable on Mobile, Centered on Desktop */}
+        <div className="flex overflow-x-auto flex-nowrap md:justify-center gap-12 mt-10 pb-4 no-scrollbar -mx-6 px-6 md:mx-0 md:px-0">
           {categories.map((cat) => {
             const catStr = String(cat);
             const isActive = active === catStr;
@@ -106,7 +106,7 @@ export default function MenuLayout({ locationLabel, menu }: Props) {
                 onClick={() => setActive(catStr)}
                 type="button"
                 className={`
-                  relative pb-2
+                  relative pb-2 whitespace-nowrap
                   text-sm uppercase tracking-[0.3em]
                   transition-colors
                   ${isActive ? "text-red-600" : "text-muted-foreground hover:text-white"}
@@ -125,9 +125,9 @@ export default function MenuLayout({ locationLabel, menu }: Props) {
           })}
         </div>
 
-        {/* Subcategory Tabs */}
+        {/* Subcategory Tabs with Mobile Scroll and Desktop Centering */}
         {subcategories.length > 1 && (
-          <div className="flex justify-center gap-10 mt-7">
+          <div className="flex overflow-x-auto flex-nowrap md:justify-center gap-8 mt-7 pb-4 no-scrollbar -mx-6 px-6 md:mx-0 md:px-0">
             {subcategories.map((sub) => {
               const isSubActive = subActive === sub;
 
@@ -136,27 +136,21 @@ export default function MenuLayout({ locationLabel, menu }: Props) {
                   key={sub}
                   onClick={() => setSubActive(sub)}
                   type="button"
-                  className={`
-                    relative pb-2
-                    text-xs uppercase tracking-[0.28em]
-                    transition-colors
-                    ${isSubActive ? "text-white" : "text-muted-foreground hover:text-white"}
-                  `}
+                  className={`whitespace-nowrap relative pb-2 text-xs uppercase tracking-[0.28em] transition-colors ${
+                    isSubActive ? "text-white" : "text-muted-foreground hover:text-white"
+                  }`}
                 >
                   {sub}
                   <span
-                    className={`
-                      absolute left-0 -bottom-1 h-[1px] w-full
-                      transition-opacity
-                      ${isSubActive ? "bg-red-600 opacity-100" : "opacity-0"}
-                    `}
+                    className={`absolute left-0 -bottom-1 h-[1px] w-full transition-opacity ${
+                      isSubActive ? "bg-red-600 opacity-100" : "opacity-0"
+                    }`}
                   />
                 </button>
               );
             })}
           </div>
         )}
-      </div>
 
       {/* Content */}
       <div className="max-w-4xl mx-auto px-6 mt-6">
@@ -224,6 +218,18 @@ export default function MenuLayout({ locationLabel, menu }: Props) {
                       onMouseEnter={() => item.img && setPreview(item)}
                       className="w-full text-left border-b border-border/60 pb-6 focus:outline-none"
                     >
+
+                      {/* Show image on mobile ONLY */}
+                      {item.img && (
+                        <div className="block lg:hidden w-full aspect-video mb-4 overflow-hidden border border-border/40">
+                          <img 
+                            src={item.img} 
+                            alt={item.name} 
+                            className="w-full h-full object-cover" 
+                          />
+                        </div>
+                      )}
+                      
                       <div className="flex items-start justify-between gap-6">
                         <div>
                           <h3 className="text-xl md:text-2xl font-serif leading-tight">
@@ -320,6 +326,7 @@ export default function MenuLayout({ locationLabel, menu }: Props) {
         </p>
       </div>
       <ScrollToTopButton />
+    </div>
     </div>
   );
 }
