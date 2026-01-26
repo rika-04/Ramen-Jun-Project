@@ -17,46 +17,60 @@ const milestones = [
 
 function CompactJourney({ lang }: { lang: string }) {
   return (
-    <section className="pt-12 py-24 bg-black overflow-hidden border-t border-white/5">
+    <section className="py-24 bg-black overflow-hidden border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl md:text-6xl font-serif text-center mb-24 text-white">
+        <h2 className="text-4xl md:text-6xl font-serif text-center mb-32 text-white">
           Our Journey
         </h2>
 
-        {/* Horizontal Container: Scrollable on mobile, spread on desktop */}
-        <div className="relative pt-12 pb-20">
-          {/* Central Horizontal Line */}
-          <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/20 -translate-y-1/2" />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="max-w-3xl mx-auto text-center "
+        >
+          <p className="text-xl md:text-2xl font-light text-white/80 leading-relaxed tracking-wide">
+            {lang === 'de' 
+              ? "Jeder erreichte Meilenstein ist ein Zeugnis für die Leidenschaft von Ramen Jun, unvergessliche kulinarische Erlebnisse zu schaffen – Schale für Schale." 
+              : "Every milestone reached is a testament to Ramen Jun's passion for crafting unforgettable culinary experiences, one bowl at a time."}
+          </p>
+        </motion.div>
 
-          <div className="flex justify-between items-start gap-4 overflow-x-auto no-scrollbar pb-8 px-4">
+        {/* The Scrollable Row */}
+        <div className="relative">
+          {/* Central Horizontal Line - Fixed to middle */}
+          <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/20 -translate-y-1/2 z-0" />
+
+          <div className="flex justify-start md:justify-between items-center gap-12 overflow-x-auto no-scrollbar px-12 md:px-0 min-h-[400px]">
             {milestones.map((m, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: i % 2 === 0 ? -20 : 20 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex-none w-56 relative flex flex-col items-center"
+                className="flex-none w-64 relative flex flex-col items-center justify-center"
               >
-                {/* Year and Label: Staggered Above (even) and Below (odd) */}
-                <div className={`text-center flex flex-col items-center ${
-                  i % 2 === 0 ? 'mb-20' : 'mt-20 order-last'
+                {/* Year and Label - Staggered */}
+                <div className={`flex flex-col items-center absolute w-full ${
+                  i % 2 === 0 ? 'bottom-1/2 mb-8' : 'top-1/2 mt-8 flex-col-reverse'
                 }`}>
-                  <span className="text-primary font-bold text-2xl tracking-tighter mb-2">
-                    {m.year}
-                  </span>
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/50 leading-relaxed px-4 max-w-[180px]">
-                    {m.label[lang as 'en' | 'de']}
-                  </p>
+                  <div className="text-center">
+                    <span className="text-primary font-bold text-2xl tracking-tighter mb-1 block">
+                      {m.year}
+                    </span>
+                    <p className="text-[10px] uppercase tracking-widest text-white/50 leading-relaxed px-4">
+                      {m.label[lang as 'en' | 'de']}
+                    </p>
+                  </div>
+
+                  {/* Stem connecting to the dot */}
+                  <div className={`w-[1px] bg-white/20 h-12 ${i % 2 === 0 ? 'mt-4' : 'mb-4'}`} />
                 </div>
 
-                {/* The Timeline Point (Dot) on the central line */}
-                <div className="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-primary border-4 border-black z-10 shadow-[0_0_15px_rgba(255,0,0,0.5)]" />
-
-                {/* Vertical Stem connecting content to the dot */}
-                <div className={`w-[1px] bg-white/20 absolute top-1/2 h-14 ${
-                  i % 2 === 0 ? '-translate-y-full' : ''
-                }`} />
+                {/* The Dot - On the line */}
+                <div className="w-4 h-4 rounded-full bg-primary border-4 border-black z-10 shadow-[0_0_15px_rgba(255,0,0,0.5)]" />
               </motion.div>
             ))}
           </div>
@@ -66,25 +80,6 @@ function CompactJourney({ lang }: { lang: string }) {
   );
 }
 
-function JourneyConclusion({ lang }: { lang: string }) {
-  return (
-    <section className="py-12 bg-black text-center">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="max-w-3xl mx-auto px-6"
-      >
-        <p className="text-xl md:text-2xl font-light text-white/80 leading-relaxed tracking-wide">
-          {lang === 'de' 
-            ? "Jeder erreichte Meilenstein ist ein Zeugnis für die Leidenschaft von Ramen Jun, unvergessliche kulinarische Erlebnisse zu schaffen – Schale für Schale." 
-            : "Every milestone reached is a testament to Ramen Jun's passion for crafting unforgettable culinary experiences, one bowl at a time."}
-        </p>
-      </motion.div>
-    </section>
-  );
-}
 
 export default function About() {
   const { lang } = useLang();
@@ -180,8 +175,7 @@ export default function About() {
         </div>
 
          {/* Integrated Journey Timeline Component */}
-         <CompactJourney lang={lang} />
-        <JourneyConclusion lang={lang} />
+        <CompactJourney lang={lang} />
 
 
         {/* Ingredient Grid */}
