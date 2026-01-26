@@ -34,89 +34,88 @@ export default function Home() {
 
 
         {/* HERO CONTENT */}
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto text-white">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-block text-sm md:text-base font-medium tracking-[0.3em] uppercase mb-6 text-white/80"
-          >
-            {copy.hero.taste}
-          </motion.span>
+        <section className="relative h-screen w-full overflow-hidden bg-black">
+            {/* 1. Background Image - Layer 0 */}
+          {/* 1. Background Image - Layer 0 */}
+          <motion.div 
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.5 }}
+            className="absolute inset-0 bg-no-repeat z-0" // Removed bg-cover to let position work better
+            style={{ 
+              backgroundImage: 'url("/images/locations/LogoAesthetic.jpg")',
+              backgroundSize: 'cover', // Applied here instead of className
+              backgroundPosition: '100% center', // 100% is equivalent to 'right'
+              filter: 'brightness(0.7) contrast(1.1)' 
+            }}
+          />
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium mb-8 leading-tight"
-          >
-            Ramen <span className="text-primary">Jun</span>
-          </motion.h1>
+            {/* 2. Dark Overlays - Layer 10 (Sits between image and text) */}
+            <div className="absolute inset-0 bg-black/60 z-10" /> 
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-transparent z-10" />
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-12 font-light leading-relaxed"
-          >
-            {copy.hero.subtitle}
-          </motion.p>
+            {/* 3. Main Content Container - Layer 20 (Sits on top of everything) */}
+            <div className="relative z-20 h-full max-w-7xl mx-auto px-6 flex items-center">
+              {/* Calligraphy and Text will now be perfectly bright */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 1 }}
+              className="hidden md:block"
+            >
+              <h2 className="text-white text-8xl lg:text-[10rem] font-japanese tracking-tighter opacity-80 select-none leading-none" 
+                  style={{ writingMode: 'vertical-rl' }}>
+                一麺入魂
+              </h2>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col items-center gap-6"
-          >
-            <div className="flex flex-col items-center gap-3">
-              <span className="text-[10px] uppercase tracking-[0.35em] text-white/60">
-                {copy.reserve.reserve}
-              </span>
+            {/* Main Content - Shifted left for the asymmetrical "Story" look */}
+            <div className="ml-0 md:ml-16 max-w-xl">
+              <motion.span 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+                className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block"
+              >
+                {lang === 'de' ? 'Tradition Trifft Moderne' : 'The Art of Ramen'}
+              </motion.span>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="https://www.quandoo.de/en/place/ramen-jun-red-56011/menu?utm_source=google&utm_medium=cpc&utm_campaign=EN_DE_SEM_MER_10000420_ADWORDS_10056011&gad_source=1&gclid=Cj0KCQjwjLGyBhCYARIsAPqTz19V42vjjV9KrcKa-LPn8JQGntHvD01EjbooO3FsdZLyGdE48OysKPMaAl_yEALw_wcB&gclsr="
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className="px-10 py-4 min-w-[260px] bg-primary text-primary-foreground text-sm font-bold uppercase tracking-[0.22em] hover:bg-primary/90 transition-all">
-                    Red
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1 }}
+                className="text-6xl md:text-8xl font-serif text-white mb-8"
+              >
+                Ramen <span className="text-primary">Jun</span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2 }}
+                className="text-white/70 text-lg leading-relaxed mb-12 max-w-md"
+              >
+                {lang === 'de' 
+                  ? 'In Frankfurt verwurzelt, in Japan inspiriert. Wir bringen die Seele Tokios in jede Schüssel.'
+                  : 'Rooted in Frankfurt, inspired by Japan. Bringing the soul of Tokyo to every bowl.'}
+              </motion.p>
+
+              {/* Simplified Buttons */}
+              <div className="flex flex-wrap gap-4">
+                <Link href={withLang("/menu")}>
+                  <button className="px-10 py-4 bg-primary text-white font-bold uppercase tracking-widest text-xs hover:bg-red-700 transition-all">
+                    {lang === 'de' ? 'Speisekarte' : 'View Menu'}
                   </button>
-                </a>
-
-                <a
-                  href="https://www.quandoo.de/en/place/ramen-jun-56012/menu?utm_source=google&utm_medium=cpc&utm_campaign=EN_DE_SEM_MER_10000420_ADWORDS_10056012&gad_source=1&gclid=Cj0KCQjwjLGyBhCYARIsAPqTz180PM_TxF9V21qEgAZVDYUdXBeM41QU0dfwbDe2YK7BjzgqPkGAdfgaApIbEALw_wcB&gclsrc=aw"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className="px-10 py-4 min-w-[260px] bg-primary text-primary-foreground text-sm font-bold uppercase tracking-[0.22em] hover:bg-primary/90 transition-all">
-                    Westend
+                </Link>
+                <Link href={withLang("/location")}>
+                  <button className="px-10 py-4 border border-white/30 text-white font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all">
+                    {lang === 'de' ? 'Standorte' : 'Locations'}
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
-             {/* VIEW MENU */}
-              <div className="flex flex-col items-center gap-3">
-                <span className="text-[10px] uppercase tracking-[0.35em] text-white/60">
-                  {copy.reserve.menu}
-                </span>
-
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href={withLang("/menu/red")}>
-                    <button className="px-10 py-4 min-w-[200px] border border-primary text-primary text-sm font-bold uppercase tracking-[0.22em] hover:bg-primary hover:text-primary-foreground transition-all">
-                      Red
-                    </button>
-                  </Link>
-
-                  <Link href={withLang("/menu/westend")}>
-                    <button className="px-10 py-4 min-w-[200px] border border-primary text-primary text-sm font-bold uppercase tracking-[0.22em] hover:bg-primary hover:text-primary-foreground transition-all">
-                      Westend
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-        </div>
+          </div>
+        </section>
 
         {/* Chevron */}
         <motion.div
@@ -129,31 +128,39 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Philosophy Section */}
-      <section className="py-24 px-6 bg-background">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div className="order-2 md:order-1 relative">
-            <div className="absolute -top-4 -left-4 w-full h-full border border-primary/20 z-0"></div>
-            <img
-              src="https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=1925&auto=format&fit=crop"
-              alt="Culinary Detail"
-              className="relative z-10 w-full h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-700"
-            />
-          </div>
+      {/* Founder's Spotlight - Dark Theme */}
+      <section className="py-24 bg-[#0a0a0a] text-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
 
-          <div className="order-1 md:order-2 space-y-8">
-            <h2 className="text-4xl md:text-5xl font-serif">{copy.story.title}</h2>
-            <div className="w-12 h-[2px] bg-primary/20"></div>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              {copy.story.text1}</p>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              {copy.story.text2}
+          {/* Centered Image with a subtle glow instead of a shadow */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="mb-12 inline-block relative group"
+          >
+            <div className="absolute -inset-1 bg-primary/20 rounded-sm blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+            <img 
+              src="/images/people/TasteTesting.jpg" 
+              alt="Founder Junichi Matsumoto"
+              className="relative max-w-full h-auto rounded-sm grayscale group-hover:grayscale-0 transition-all duration-700"
+            />
+          </motion.div>
+
+          {/* The Quote with elegant typography */}
+          <div className="max-w-2xl mx-auto space-y-8">
+            <p className="text-2xl md:text-4xl font-serif leading-relaxed text-white/90">
+              "I want to serve good ramen to make people smile. This was my start, and this is an everyday challenge since."
             </p>
-            <Link href={withLang("/location")}>
-              <span className="inline-flex items-center gap-2 text-primary font-bold tracking-widest uppercase text-sm border-b border-primary/20 pb-1 hover:border-primary transition-all cursor-pointer mt-4">
-                Visit Us <ArrowRight size={16} />
-              </span>
-            </Link>
+
+            <div className="flex flex-col items-center gap-3">
+              <span className="h-[1px] w-16 bg-primary" />
+              <h3 className="text-xl font-bold uppercase tracking-[0.3em] text-primary">
+                Junichi Matsumoto
+              </h3>
+              <p className="text-xs text-white/40 uppercase tracking-widest">
+                The Soul Behind the Bowl
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -161,6 +168,27 @@ export default function Home() {
       
       {/* GALLERY */}
       <Gallery />
+
+      {/* Visual Break: Philosophy */}
+      {/* Philosophy Break - With Redirect */}
+      <section className="py-24 bg-black border-y border-white/5">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-8">
+            {lang === 'de' ? 'Das Geheimnis' : 'The Secret'}
+          </h2>
+          <p className="text-3xl md:text-5xl font-serif italic text-white/90 leading-tight mb-12">
+            {lang === 'de' 
+              ? "Echte Handwerkskunst braucht Zeit." 
+              : "True craftsmanship takes time."}
+          </p>
+
+          <Link href={withLang("/OurStory")}>
+            <button className="px-10 py-4 border border-white/20 text-white text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-500">
+              {lang === 'de' ? 'Entdecken Sie unsere Reise' : 'Discover Our Journey'}
+            </button>
+          </Link>
+        </div>
+      </section>
 
     
       {/* Featured Section */}
